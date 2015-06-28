@@ -23,7 +23,7 @@ function prepareFile(){
   if [ -e "$TARGETPATH" ]; then
     echo "Version tar already downloaded."
   else
-    wget http://electrum-doged.space/downloads/$FILENAME -O $TARGETPATH
+    wget http://electrum-doged.space/download/$FILENAME -O $TARGETPATH
   fi
 
   if [ -d "$TARGETFOLDER" ]; then

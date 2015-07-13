@@ -1,6 +1,6 @@
 #!/bin/bash -l
 function buildBinary(){
-  $DOCKERBIN run --rm -it --privileged -v $(pwd)/source:/opt/wine-electrum/drive_c/electrum/ electrum-winbuild /usr/bin/build-binary $VERSION
+  $DOCKERBIN run --rm -it --privileged -v $(pwd)/source:/opt/wine-electrum/drive_c/electrum/ doged-electrum-winbuild /usr/bin/build-binary $VERSION
   if [[ $? = 0 ]]; then
     echo "Build successful."
   else
@@ -15,7 +15,7 @@ function buildBinary(){
 
 function buildImage(){
   echo "Building image"
-  $DOCKERBIN build -t electrum-winbuild .
+  $DOCKERBIN build -t doged-electrum-winbuild .
 }
 
 function prepareFile(){

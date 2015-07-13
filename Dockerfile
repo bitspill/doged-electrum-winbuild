@@ -4,9 +4,9 @@ MAINTAINER Jeremiah Buddenhagen bitspill@bitspill.net
 
 RUN dpkg --add-architecture i386
 
-RUN  cat <<BLOCK >> /etc/apt/sources.list 
-deb http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu trusty main 
-deb-src http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu trusty main
+RUN  cat <<BLOCK >> /etc/apt/sources.list \
+deb http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu trusty main \
+deb-src http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu trusty main \
 BLOCK
 
 RUN apt-get update -y && apt-get install -y \

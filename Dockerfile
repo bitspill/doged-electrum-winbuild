@@ -1,16 +1,19 @@
 FROM ubuntu:14.04
-MAINTAINER justinvforvendetta@gmail.com
 
-RUN apt-get update -y
-RUN apt-get upgrade -y
-RUN apt-get install -y software-properties-common && add-apt-repository -y ppa:ubuntu-wine/ppa
+MAINTAINER Jeremiah Buddenhagen bitspill@bitspill.net
+
 RUN dpkg --add-architecture i386
-RUN apt-get update -y
-RUN apt-get install -y wine1.7 xvfb wget
-RUN apt-get install -y winbind
 
-RUN apt-get purge -y python-software-properties
-RUN apt-get autoclean -y
+RUN  cat <<BLOCK >> /etc/apt/sources.list 
+deb http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu trusty main 
+deb-src http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu trusty main
+BLOCK
+
+RUN apt-get update -y && apt-get install -y \
+    wget \
+    winbind \
+    wine1.7 \
+    xvfb
 
 # Versions
 ENV PYTHON_URL https://www.python.org/ftp/python/2.7.8/python-2.7.8.msi
@@ -21,7 +24,6 @@ ENV NSIS_URL http://prdownloads.sourceforge.net/nsis/nsis-2.46-setup.exe?downloa
 
 # Paths
 ENV WINEPREFIX /opt/wine-electrum
-RUN export WINEPREFIX=/opt/wine-electrum
 
 ENV ELECTRUM_PATH $WINE_PREFIX/drive_c/electrum
 ENV PYHOME c:/Python27

@@ -4,19 +4,17 @@ MAINTAINER Jeremiah Buddenhagen bitspill@bitspill.net
 
 RUN dpkg --add-architecture i386
 
-RUN  cat <<BLOCK >> /etc/apt/sources.list \
-deb http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu trusty main \
-deb-src http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu trusty main \
-BLOCK
+RUN echo "deb http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu trusty main" >> /etc/apt/sources.list 
+RUN echo "deb-src http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu trusty main" >> /etc/apt/sources.list
 
-RUN apt-get update -y && apt-get install -y \
+RUN apt-get update -y && apt-get install -y --force-yes \
     wget \
     winbind \
-    wine1.7 \
+    wine1.6 \
     xvfb
 
 # Versions
-ENV PYTHON_URL https://www.python.org/ftp/python/2.7.8/python-2.7.8.msi
+ENV PYTHON_URL https://www.python.org/ftp/python/2.7.9/python-2.7.9.msi
 ENV PYQT4_URL http://downloads.sourceforge.net/project/pyqt/PyQt4/PyQt-4.11.1/PyQt4-4.11.1-gpl-Py2.7-Qt4.8.6-x32.exe?r=http%3A%2F%2Fwww.riverbankcomputing.co.uk%2Fsoftware%2Fpyqt%2Fdownload&ts=1410031650&use_mirror=skylink
 ENV PYWIN32_URL http://downloads.sourceforge.net/project/pywin32/pywin32/Build%20217/pywin32-217.win32-py2.7.exe?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fpywin32%2Ffiles%2Fpywin32%2FBuild%2520217%2F&ts=1410031204&use_mirror=kent
 ENV PYINSTALLER_URL https://pypi.python.org/packages/source/P/PyInstaller/PyInstaller-2.1.zip

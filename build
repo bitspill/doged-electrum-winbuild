@@ -7,8 +7,8 @@ function buildBinary(){
     echo "Seems like the build failed. Exiting."
     exit
   fi
-  cp $TARGETFOLDER/dist/electrum.exe $(pwd)/releases/electrum-$VERSION.exe
-  cp $(pwd)/source/electrum-setup.exe $(pwd)/releases/electrum-$VERSION-setup.exe
+  cp $TARGETFOLDER/dist/electrum.exe $(pwd)/releases/electrum-doged-$VERSION.exe
+  cp $(pwd)/source/electrum-setup.exe $(pwd)/releases/electrum-doged-$VERSION-setup.exe
   echo "You can find your electrum $VERSION binaries in the releases folder."
 
 }
